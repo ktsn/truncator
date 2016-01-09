@@ -1,6 +1,7 @@
 /* eslint-env node */
 const gulp = require('gulp');
 const gutil = require('gulp-util');
+const rename = require('gulp-rename');
 const eslint = require('gulp-eslint');
 const uglify = require('gulp-uglify');
 const webpack = require('webpack');
@@ -8,7 +9,7 @@ const del = require('del');
 const run = require('run-sequence');
 
 gulp.task('clean', (done) => {
-  del(['.tmp', 'dist'], done);
+  del(['dist'], done);
 });
 
 gulp.task('eslint', () => {
@@ -36,8 +37,11 @@ gulp.task('webpack:dev', () => {
 });
 
 gulp.task('uglify', () => {
-  return gulp.src('.tmp/**/*.js')
+  return gulp.src('dist/**/*.js')
     .pipe(uglify())
+    .pipe(rename({
+      suffix: '.min'
+    }))
     .pipe(gulp.dest('dist'));
 });
 
