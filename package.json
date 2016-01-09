@@ -1,6 +1,6 @@
 {
   "name": "truncator",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Simple text truncator that truncate by line count, content height or character count.",
   "author": "katashin",
   "license": "MIT",
