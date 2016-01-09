@@ -5,7 +5,7 @@ Simple text truncator that truncate by line count, content height or character c
 Install from npm.
 
 ```sh
-$ npm install
+$ npm install truncator
 ```
 
 Just put a script element in your html file.
