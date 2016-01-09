@@ -37,7 +37,7 @@ gulp.task('webpack:dev', () => {
 });
 
 gulp.task('uglify', () => {
-  return gulp.src('dist/**/*.js')
+  return gulp.src(['dist/**/*.js', '!**/*.min.js'])
     .pipe(uglify())
     .pipe(rename({
       suffix: '.min'
