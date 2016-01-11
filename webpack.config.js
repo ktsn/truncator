@@ -1,9 +1,11 @@
 /* eslint-env node */
+const path = require('path');
+
 module.exports = {
-  context: __dirname + '/src',
+  context: path.resolve(__dirname, 'src'),
   entry: './index.js',
   output: {
-    path: __dirname + '/dist',
+    path: path.resolve(__dirname, 'dist'),
     filename: 'truncator.js',
     libraryTarget: 'umd'
   },
@@ -13,7 +15,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.js$/, loader: 'babel-loader' }
+      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
     ]
   }
 };

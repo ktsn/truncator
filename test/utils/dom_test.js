@@ -1,3 +1,5 @@
+import assert from 'power-assert';
+
 import dom from '../../src/utils/dom';
 
 describe('DOM helper', () => {

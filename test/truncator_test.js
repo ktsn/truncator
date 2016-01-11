@@ -1,3 +1,5 @@
+import assert from 'power-assert';
+
 import * as truncator from '../src/truncator';
 import dom from '../src/utils/dom';
 
