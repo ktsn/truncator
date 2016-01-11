@@ -27,14 +27,16 @@ truncate(el, text, options);
 ```
 
 - `el`: `HTMLElement` that will be input `text`.
-- `text`: Truncate target `string`
-- `options`: Truncate options `object` that accepts `line`, `height` or `count`.
+- `text`: Truncate target `string`.
+- `options`: Truncate options `object`.
+  - `line`, `height` or `count`
+  - `ellipsis`: Ellipsis symbol. `null` indicates no symbol will be added. default: `'...'`
 
 ### Example
 
 ```js
 var el = document.getElementById('wrapper');
-truncate(el, 'Target text', { line: 3 });
+truncate(el, 'Target text', { line: 3, ellipsis: null });
 ```
 
 ## License

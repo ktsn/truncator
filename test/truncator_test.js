@@ -1,40 +1,88 @@
-import * as truncator from '../src/truncator';
-import dom from '../src/utils/dom';
+import assert from 'power-assert';
+
+import {truncate} from '../src/truncator';
 
 describe('truncate methods', () => {
-  let d, input, expected;
+  let el, expected;
 
-  input = 'Grumpy wizards make toxic brew for the evil Queen and Jack';
+  const input = 'Grumpy wizards make toxic brew for the evil Queen and Jack';
 
   beforeEach(() => {
-    d = dom(document.createElement('p'));
-    document.body.appendChild(d.el);
+    el = document.createElement('p');
+    document.body.appendChild(el);
   });
 
   afterEach(() => {
-    document.body.removeChild(d.el);
+    document.body.removeChild(el);
   });
 
-  describe('truncateByCount', () => {
+  describe('Truncate by count', () => {
     it('truncates text by character count', () => {
       expected = 'Grumpy wiz...';
-      truncator.truncateByCount(d, input, 10);
+      truncate(el, input, { count: 10 });
 
-      assert.strictEqual(d.el.innerHTML, expected);
+      assert.strictEqual(el.innerHTML, expected);
     });
 
     it('should not truncate if given count equals given text length', () => {
       expected = input;
-      truncator.truncateByCount(d, input, 59);
+      truncate(el, input, { count: 59 });
 
-      assert.strictEqual(d.el.innerHTML, expected);
+      assert.strictEqual(el.innerHTML, expected);
     });
 
     it('should not truncate if given count exceeds given text length', () => {
       expected = input;
-      truncator.truncateByCount(d, input, 70);
+      truncate(el, input, { count: 70 });
 
-      assert.strictEqual(d.el.innerHTML, expected);
+      assert.strictEqual(el.innerHTML, expected);
+    });
+  });
+
+  describe('Truncate by height', () => {
+    let style;
+
+    beforeEach(() => {
+      el.style.lineHeight = '15px';
+      el.style.width = '50px';
+
+      style = window.getComputedStyle(el);
+    });
+
+    it('truncates text until the element height is less than given height', () => {
+      truncate(el, input, { height: 30 });
+
+      assert(parseFloat(style.height) === 30); // 15px x 2lines
+    });
+
+    it('should truncate if given height can contain whole text', () => {
+      expected = input;
+      truncate(el, input, { height: 1000 });
+
+      assert(el.innerHTML === expected);
+    });
+  });
+
+  describe('Truncate options', () => {
+    it('accept an ellipsis option for trailing characters', () => {
+      expected = 'Grumpy wiz???';
+      truncate(el, input, { count: 10, ellipsis: '???' });
+
+      assert(el.innerHTML === expected);
+    });
+
+    it('add no ellipsis symbol if null is given', () => {
+      expected = 'Grumpy wiz';
+      truncate(el, input, { count: 10, ellipsis: null });
+
+      assert(el.innerHTML === expected);
+    });
+
+    it('add default ellipsis symbol if undefined is given', () => {
+      expected = 'Grumpy wiz...';
+      truncate(el, input, { count: 10, ellipsis: undefined });
+
+      assert(el.innerHTML === expected);
     });
   });
 });

@@ -3,5 +3,4 @@
   src_files:
     - .tmp/test.js
   serve_files:
-    - node_modules/power-assert/build/power-assert.js
     - .tmp/test.js

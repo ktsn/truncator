@@ -1,11 +1,12 @@
 /* eslint-env node */
+const path = require('path');
 const glob = require('glob');
 
 module.exports = {
-  context: __dirname,
+  context: path.resolve(__dirname),
   entry: glob.sync('./test/**/*.js'),
   output: {
-    path: __dirname + '/.tmp',
+    path: path.resolve(__dirname, '.tmp'),
     filename: 'test.js'
   },
   resolve: {
@@ -14,7 +15,8 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.js$/, loader: 'babel-loader' }
+      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.json$/, loader: 'json-loader' }
     ]
   }
 };
