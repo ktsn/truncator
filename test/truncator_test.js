@@ -1,42 +1,50 @@
 import assert from 'power-assert';
 
-import * as truncator from '../src/truncator';
-import dom from '../src/utils/dom';
+import {truncate} from '../src/truncator';
 
 describe('truncate methods', () => {
-  let d, input, expected;
+  let el, input, expected;
 
   input = 'Grumpy wizards make toxic brew for the evil Queen and Jack';
 
   beforeEach(() => {
-    d = dom(document.createElement('p'));
-    document.body.appendChild(d.el);
+    el = document.createElement('p');
+    document.body.appendChild(el);
   });
 
   afterEach(() => {
-    document.body.removeChild(d.el);
+    document.body.removeChild(el);
   });
 
-  describe('truncateByCount', () => {
+  describe('Truncate by count', () => {
     it('truncates text by character count', () => {
       expected = 'Grumpy wiz...';
-      truncator.truncateByCount(d, input, 10);
+      truncate(el, input, { count: 10 });
 
-      assert.strictEqual(d.el.innerHTML, expected);
+      assert.strictEqual(el.innerHTML, expected);
     });
 
     it('should not truncate if given count equals given text length', () => {
       expected = input;
-      truncator.truncateByCount(d, input, 59);
+      truncate(el, input, { count: 59 });
 
-      assert.strictEqual(d.el.innerHTML, expected);
+      assert.strictEqual(el.innerHTML, expected);
     });
 
     it('should not truncate if given count exceeds given text length', () => {
       expected = input;
-      truncator.truncateByCount(d, input, 70);
+      truncate(el, input, { count: 70 });
 
-      assert.strictEqual(d.el.innerHTML, expected);
+      assert.strictEqual(el.innerHTML, expected);
+    });
+  });
+
+  describe('Truncate options', () => {
+    it('accept an ellipsis option for trailing characters', () => {
+      expected = 'Grumpy wiz???';
+      truncate(el, input, { count: 10, ellipsis: '???' });
+
+      assert(el.innerHTML === expected);
     });
   });
 });
