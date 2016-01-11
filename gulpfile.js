@@ -5,6 +5,9 @@ const rename = require('gulp-rename');
 const eslint = require('gulp-eslint');
 const uglify = require('gulp-uglify');
 const webpack = require('webpack');
+const Testem = require('testem');
+const yaml = require('js-yaml');
+const fs = require('fs');
 const del = require('del');
 const run = require('run-sequence');
 
@@ -44,6 +47,11 @@ gulp.task('webpack:test', () => {
   });
 });
 
+gulp.task('testem', () => {
+  const testem = new Testem();
+  testem.startDev(yaml.safeLoad(fs.readFileSync(__dirname + '/testem.yml')));
+});
+
 gulp.task('uglify', () => {
   return gulp.src(['dist/**/*.js', '!**/*.min.js'])
     .pipe(uglify())
@@ -57,4 +65,5 @@ gulp.task('build', ['eslint'], (done) => {
   run('webpack', 'uglify', done);
 });
 
+gulp.task('test', ['webpack:test', 'testem']);
 gulp.task('default', ['webpack:dev']);
