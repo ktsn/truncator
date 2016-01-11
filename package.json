@@ -13,7 +13,7 @@
     "url": "https://github.com/ktsn/truncator/issues"
   },
   "scripts": {
-    "prepublish": "npm build",
+    "prepublish": "npm run build",
     "build": "gulp build",
     "test": "gulp webpack:test > /dev/null & testem"
   },
