@@ -3,9 +3,9 @@ import assert from 'power-assert';
 import {truncate} from '../src/truncator';
 
 describe('truncate methods', () => {
-  let el, input, expected;
+  let el, expected;
 
-  input = 'Grumpy wizards make toxic brew for the evil Queen and Jack';
+  const input = 'Grumpy wizards make toxic brew for the evil Queen and Jack';
 
   beforeEach(() => {
     el = document.createElement('p');
@@ -36,6 +36,30 @@ describe('truncate methods', () => {
       truncate(el, input, { count: 70 });
 
       assert.strictEqual(el.innerHTML, expected);
+    });
+  });
+
+  describe('Truncate by height', () => {
+    let style;
+
+    beforeEach(() => {
+      el.style.lineHeight = '15px';
+      el.style.width = '50px';
+
+      style = window.getComputedStyle(el);
+    });
+
+    it('truncates text until the element height is less than given height', () => {
+      truncate(el, input, { height: 30 });
+
+      assert(parseFloat(style.height) === 30); // 15px x 2lines
+    });
+
+    it('should truncate if given height can contain whole text', () => {
+      expected = input;
+      truncate(el, input, { height: 1000 });
+
+      assert(el.innerHTML === expected);
     });
   });
 
