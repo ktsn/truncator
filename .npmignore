@@ -1,8 +1,12 @@
 /.babelrc
 /.eslintrc
+/testem.yml
 
 /gulpfile.js
 /webpack.config.js
 /webpack.config.dev.js
+/webpack.config.test.js
 
-/src
+/src/
+/.tmp/
+/test/
