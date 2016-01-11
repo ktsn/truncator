@@ -15,7 +15,7 @@ class Dom {
   }
 
   get height() {
-    return parseFloat(this.style.getPropertyValue('height'));
+    return parseFloat(this.style.getPropertyValue('height')) || 0;
   }
 
   get lineHeight() {

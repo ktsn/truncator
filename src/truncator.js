@@ -13,6 +13,11 @@ export function truncateByHeight(el, text, height) {
 }
 
 export function truncateByCount(el, text, count) {
+  if (text.length <= count) {
+    el.text = text;
+    return;
+  }
+
   el.text = text.substring(0, count) + '...';
 }
 
