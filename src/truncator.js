@@ -15,7 +15,7 @@ export function truncate(el, text, options) {
   }
 
   const domEl = dom(el);
-  const opts = extend({}, DEFAULT_OPTIONS, options);
+  const opts = normalizeOptions(options);
 
   if (typeof opts.height === 'number') {
     return truncateByHeight(domEl, text, opts.height, opts);
@@ -30,6 +30,14 @@ export function truncate(el, text, options) {
   }
 
   throw new Error('options must have height, line or count as number');
+}
+
+function normalizeOptions(options) {
+  const opts = extend({}, DEFAULT_OPTIONS, options);
+
+  if (opts.ellipsis === null) opts.ellipsis = '';
+
+  return opts;
 }
 
 function truncateByLine(el, text, line, options) {

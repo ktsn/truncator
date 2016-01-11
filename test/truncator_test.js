@@ -70,5 +70,19 @@ describe('truncate methods', () => {
 
       assert(el.innerHTML === expected);
     });
+
+    it('add no ellipsis symbol if null is given', () => {
+      expected = 'Grumpy wiz';
+      truncate(el, input, { count: 10, ellipsis: null });
+
+      assert(el.innerHTML === expected);
+    });
+
+    it('add default ellipsis symbol if undefined is given', () => {
+      expected = 'Grumpy wiz...';
+      truncate(el, input, { count: 10, ellipsis: undefined });
+
+      assert(el.innerHTML === expected);
+    });
   });
 });
