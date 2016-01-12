@@ -15,7 +15,7 @@
   "scripts": {
     "prepublish": "npm run build",
     "build": "gulp build",
-    "test": "gulp webpack:test & testem"
+    "test": "gulp test"
   },
   "devDependencies": {
     "babel-core": "^6.3.13",
@@ -30,6 +30,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.5.1",
     "gulp-util": "^3.0.7",
+    "js-yaml": "^3.5.2",
     "json-loader": "^0.5.4",
     "power-assert": "^1.2.0",
     "run-sequence": "^1.1.5",
