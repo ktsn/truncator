@@ -6,30 +6,28 @@ const DEFAULT_OPTIONS = {
 };
 
 export function truncate(el, text, options) {
-  if (typeof options === 'number') {
-    return truncateByHeight(el, text, options);
-  }
-
   if (options === null || typeof options !== 'object') {
-    throw new Error('options must be number or object');
+    throw new Error('options must be an object');
   }
 
-  const domEl = dom(el);
-  const opts = normalizeOptions(options);
+  execWithUnfixHeight(el, () => {
+    const domEl = dom(el);
+    const opts = normalizeOptions(options);
 
-  if (typeof opts.height === 'number') {
-    return truncateByHeight(domEl, text, opts.height, opts);
-  }
+    if (typeof opts.height === 'number') {
+      return truncateByHeight(domEl, text, opts.height, opts);
+    }
 
-  if (typeof opts.line === 'number') {
-    return truncateByLine(domEl, text, Math.floor(opts.line), opts);
-  }
+    if (typeof opts.line === 'number') {
+      return truncateByLine(domEl, text, Math.floor(opts.line), opts);
+    }
 
-  if (typeof opts.count === 'number') {
-    return truncateByCount(domEl, text, Math.floor(opts.count), opts);
-  }
+    if (typeof opts.count === 'number') {
+      return truncateByCount(domEl, text, Math.floor(opts.count), opts);
+    }
 
-  throw new Error('options must have height, line or count as number');
+    throw new Error('options must have height, line or count as number');
+  });
 }
 
 function normalizeOptions(options) {
@@ -38,6 +36,26 @@ function normalizeOptions(options) {
   if (opts.ellipsis === null) opts.ellipsis = '';
 
   return opts;
+}
+
+// set the element height to auto
+// and unlock constraints of min-, max-height during given function is executed
+function execWithUnfixHeight(el, fn) {
+  const {height, maxHeight, minHeight} = el.style;
+
+  try {
+    el.style.height = 'auto';
+    el.style.maxHeight = 'none';
+    el.style.minHeight = '0';
+
+    fn();
+
+  } finally {
+    // ensure the styles are restored
+    el.style.height = height;
+    el.style.maxHeight = maxHeight;
+    el.style.minHeight = minHeight;
+  }
 }
 
 function truncateByLine(el, text, line, options) {
@@ -68,7 +86,7 @@ function truncateImpl(el, text, maxHeight, options, left, right) {
   const truncated = text.substring(0, center) + options.ellipsis;
   el.text = truncated;
 
-  if (left + 1 >= right) {
+  if (left >= right - 1) {
     return;
   }
 

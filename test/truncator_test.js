@@ -61,6 +61,39 @@ describe('truncate methods', () => {
 
       assert(el.innerHTML === expected);
     });
+
+    it('should truncate even if the element height is fixed', () => {
+      truncate(el, input, { height: 30 });
+      expected = el.innerHTML;
+
+      el.style.height = '1000px';
+      truncate(el, input, { height: 30 });
+
+      assert(el.innerHTML === expected);
+      assert(el.style.height === '1000px');
+    });
+
+    it('should truncate even if max-height is set', () => {
+      truncate(el, input, { height: 30 });
+      expected = el.innerHTML;
+
+      el.style.maxHeight = '10px';
+      truncate(el, input, { height: 30 });
+
+      assert(el.innerHTML === expected);
+      assert(el.style.maxHeight === '10px');
+    });
+
+    it('should truncate even if min-height is set', () => {
+      truncate(el, input, { height: 30 });
+      expected = el.innerHTML;
+
+      el.style.minHeight = '1000px';
+      truncate(el, input, { height: 30 });
+
+      assert(el.innerHTML === expected);
+      assert(el.style.minHeight === '1000px');
+    });
   });
 
   describe('Truncate options', () => {
