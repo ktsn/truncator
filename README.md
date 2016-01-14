@@ -1,7 +1,7 @@
 # Truncator
-Simple text truncator that truncate by line count, content height or character count.
+Layout specific text truncator considering line length, content height or character length.
 
-## Install
+## Installation
 Install from npm.
 
 ```sh
