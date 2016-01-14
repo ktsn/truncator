@@ -64,7 +64,7 @@ function truncateImpl(el, text, maxHeight, options, left, right) {
   const truncated = text.substring(0, center) + options.ellipsis;
   el.text = truncated;
 
-  if (left + 1 >= right) {
+  if (left >= right - 1) {
     return;
   }
 
