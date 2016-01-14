@@ -6,12 +6,8 @@ const DEFAULT_OPTIONS = {
 };
 
 export function truncate(el, text, options) {
-  if (typeof options === 'number') {
-    return truncateByHeight(el, text, options);
-  }
-
   if (options === null || typeof options !== 'object') {
-    throw new Error('options must be number or object');
+    throw new Error('options must be an object');
   }
 
   const domEl = dom(el);
