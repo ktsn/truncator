@@ -1,10 +1,14 @@
 {
   "name": "truncator",
   "version": "0.2.1",
-  "description": "Simple text truncator that truncate by line count, content height or character count.",
+  "description": "Layout specific text truncator",
   "author": "katashin",
   "license": "MIT",
   "main": "dist/truncator.js",
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/ktsn/truncator",
   "repository": {
     "type": "git",
     "url": "https://github.com/ktsn/truncator"
@@ -13,28 +17,25 @@
     "url": "https://github.com/ktsn/truncator/issues"
   },
   "scripts": {
-    "prepublish": "npm run build",
-    "build": "gulp build",
-    "test": "gulp test"
+    "prepublish": "npm run lint && npm run build",
+    "clean": "rm -rf .tmp dist",
+    "build": "bash scripts/build.sh",
+    "lint": "eslint --fix src test scripts",
+    "test": "bash scripts/test-dev.sh"
   },
   "devDependencies": {
     "babel-core": "^6.3.13",
     "babel-loader": "^6.2.0",
     "babel-plugin-espower": "^2.1.0",
     "babel-preset-es2015": "^6.3.13",
-    "babel-preset-stage-3": "^6.3.13",
-    "del": "^2.1.0",
-    "glob": "^6.0.4",
-    "gulp": "^3.9.0",
-    "gulp-eslint": "^1.1.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^1.5.1",
-    "gulp-util": "^3.0.7",
-    "js-yaml": "^3.5.2",
+    "eslint": "^3.8.1",
+    "glob": "^7.1.1",
     "json-loader": "^0.5.4",
     "power-assert": "^1.2.0",
-    "run-sequence": "^1.1.5",
-    "testem": "^0.9.11",
-    "webpack": "^1.12.9"
+    "rollup": "^0.36.3",
+    "rollup-plugin-babel": "^2.6.1",
+    "testem": "^1.13.0",
+    "uglifyjs": "^2.4.10",
+    "webpack": "^2.1.0-beta.25"
   }
 }

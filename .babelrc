@@ -1,4 +1,10 @@
 {
-  "presets": ["es2015", "stage-3"],
-  "plugins": ["babel-plugin-espower"]
+  "presets": [
+    ["es2015", { "modules": false }]
+  ],
+  "env": {
+    "development": {
+      "plugins": ["babel-plugin-espower"]
+    }
+  }
 }
