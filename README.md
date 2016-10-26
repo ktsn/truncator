@@ -2,22 +2,29 @@
 Layout specific text truncator considering line length, content height or character length.
 
 ## Installation
-Install from npm.
+You can install truncator from npm.
 
 ```sh
-$ npm install truncator
+$ npm install truncator --save
 ```
 
-Just put a script element in your html file.
-
-```html
-<script src="path/to/truncator.js"></script>
-```
-
-You can use module loader such as [Webpack](https://webpack.github.io/) or [Browserify](http://browserify.org/).
+If you are using module loader such as [Rollup](http://rollupjs.org/) or [Webpack](https://webpack.github.io/):
 
 ```js
-var truncate = require('truncator').truncate;
+import { truncate } from 'truncator';
+```
+
+Also, you can use it from [unpkg](https://unpkg.com):
+
+```html
+<!-- Normal build -->
+<script src="https://unpkg.com/truncator"></script>
+<!-- Minified build -->
+<script src="https://unpkg.com/truncator/dist/truncator.min.js"></script>
+```
+
+```js
+var truncate = Truncator.truncate;
 ```
 
 ## Usage
