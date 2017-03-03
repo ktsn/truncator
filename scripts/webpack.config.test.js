@@ -1,6 +1,6 @@
 /* eslint-env node */
-const path = require('path');
-const glob = require('glob');
+const path = require('path')
+const glob = require('glob')
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
@@ -19,4 +19,4 @@ module.exports = {
       { test: /\.json$/, loader: 'json' }
     ]
   }
-};
+}
