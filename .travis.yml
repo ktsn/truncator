@@ -7,4 +7,6 @@ cache:
 node_js:
   - "6"
 script:
-  - echo
+  - yarn lint
+  - yarn test
+  - yarn build
