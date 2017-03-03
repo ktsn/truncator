@@ -1,5 +1,6 @@
 # Truncator
 [![npm version](https://badge.fury.io/js/truncator.svg)](https://badge.fury.io/js/truncator)
+[![Build Status](https://travis-ci.org/ktsn/truncator.svg?branch=master)](https://travis-ci.org/ktsn/truncator)
 
 Layout specific text truncator considering line length, content height or character length.
 

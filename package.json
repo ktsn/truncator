@@ -17,12 +17,14 @@
     "url": "https://github.com/ktsn/truncator/issues"
   },
   "scripts": {
-    "prepublish": "npm run lint && npm run build",
+    "prepublish": "yarn lint && yarn build",
     "clean": "rm -rf .tmp dist",
     "build": "bash scripts/build.sh",
+    "build:test": "webpack --config scripts/webpack.config.test.js",
+    "dev": "bash scripts/test-dev.sh",
     "lint": "eslint src test scripts",
-    "lint:fix": "npm run lint -- --fix",
-    "test": "bash scripts/test-dev.sh"
+    "lint:fix": "yarn run lint -- --fix",
+    "test": "yarn build:test && testem ci --launch PhantomJS"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
