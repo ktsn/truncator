@@ -204,7 +204,7 @@ babel-code-frame@^6.16.0, babel-code-frame@^6.22.0:
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
-babel-core@6, babel-core@^6.23.0, babel-core@^6.3.13:
+babel-core@6, babel-core@^6.23.0, babel-core@^6.23.1:
   version "6.23.1"
   resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.23.1.tgz#c143cb621bb2f621710c220c5d579d15b8a442df"
   dependencies:
@@ -316,7 +316,7 @@ babel-helpers@^6.23.0:
     babel-runtime "^6.22.0"
     babel-template "^6.23.0"
 
-babel-loader@^6.2.0:
+babel-loader@^6.3.2:
   version "6.3.2"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-6.3.2.tgz#18de4566385578c1b4f8ffe6cbc668f5e2a5ef03"
   dependencies:
@@ -337,7 +337,7 @@ babel-plugin-check-es2015-constants@^6.22.0:
   dependencies:
     babel-runtime "^6.22.0"
 
-babel-plugin-espower@^2.1.0:
+babel-plugin-espower@^2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/babel-plugin-espower/-/babel-plugin-espower-2.3.2.tgz#5516b8fcdb26c9f0e1d8160749f6e4c65e71271e"
   dependencies:
@@ -530,7 +530,7 @@ babel-plugin-transform-strict-mode@^6.22.0:
     babel-runtime "^6.22.0"
     babel-types "^6.22.0"
 
-babel-preset-es2015@^6.3.13:
+babel-preset-es2015@^6.22.0:
   version "6.22.0"
   resolved "https://registry.yarnpkg.com/babel-preset-es2015/-/babel-preset-es2015-6.22.0.tgz#af5a98ecb35eb8af764ad8a5a05eb36dc4386835"
   dependencies:
@@ -1342,7 +1342,11 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint@^3.8.1:
+eslint-config-ktsn@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-ktsn/-/eslint-config-ktsn-1.0.0.tgz#123f452efe4500a2cd109fe6b01f44c9a2e77c06"
+
+eslint@^3.16.1:
   version "3.16.1"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.16.1.tgz#9bc31fc7341692cf772e80607508f67d711c5609"
   dependencies:
@@ -2458,13 +2462,9 @@ oauth-sign@~0.8.1:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/oauth-sign/-/oauth-sign-0.8.2.tgz#46a6ab7f0aead8deae9ec0565780b7d4efeb9d43"
 
-object-assign@4.1.0:
+object-assign@4.1.0, object-assign@^4.0.1, object-assign@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.0.tgz#7a3b3d0e98063d43f4c03f2e8ae6cd51a86883a0"
-
-object-assign@^4.0.1, object-assign@^4.1.0:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
 
 object-component@0.0.3:
   version "0.0.3"
@@ -2729,7 +2729,7 @@ power-assert-util-string-width@^1.1.1:
   dependencies:
     eastasianwidth "^0.1.1"
 
-power-assert@^1.2.0:
+power-assert@^1.4.2:
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/power-assert/-/power-assert-1.4.2.tgz#43319cd0fecd3221f276f1cc49ffa2eaeb9a1815"
   dependencies:
@@ -3036,7 +3036,7 @@ ripemd160@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/ripemd160/-/ripemd160-1.0.1.tgz#93a4bbd4942bc574b69a8fa57c71de10ecca7d6e"
 
-rollup-plugin-babel@^2.6.1:
+rollup-plugin-babel@^2.7.1:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/rollup-plugin-babel/-/rollup-plugin-babel-2.7.1.tgz#16528197b0f938a1536f44683c7a93d573182f57"
   dependencies:
@@ -3052,9 +3052,9 @@ rollup-pluginutils@^1.5.0:
     estree-walker "^0.2.1"
     minimatch "^3.0.2"
 
-rollup@^0.36.3:
-  version "0.36.4"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.36.4.tgz#a224494c5386c1d73d38f7bb86f69f5eb011a3d2"
+rollup@^0.41.4:
+  version "0.41.4"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.41.4.tgz#a970580176329f9ead86854d7fd4c46de752aef8"
   dependencies:
     source-map-support "^0.4.0"
 
@@ -3393,7 +3393,7 @@ tar@~2.2.1:
     fstream "^1.0.2"
     inherits "2"
 
-testem@^1.13.0:
+testem@^1.15.0:
   version "1.15.0"
   resolved "https://registry.yarnpkg.com/testem/-/testem-1.15.0.tgz#2e3a9e7ac29f16a20f718eb0c4b12e7a44900675"
   dependencies:
@@ -3615,7 +3615,7 @@ webpack-sources@^0.1.4:
     source-list-map "~0.1.7"
     source-map "~0.5.3"
 
-webpack@^2.1.0-beta.25:
+webpack@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-2.2.1.tgz#7bb1d72ae2087dd1a4af526afec15eed17dda475"
   dependencies:
