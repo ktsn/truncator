@@ -20,7 +20,8 @@
     "prepublish": "npm run lint && npm run build",
     "clean": "rm -rf .tmp dist",
     "build": "bash scripts/build.sh",
-    "lint": "eslint --fix src test scripts",
+    "lint": "eslint src test scripts",
+    "lint:fix": "npm run lint -- --fix",
     "test": "bash scripts/test-dev.sh"
   },
   "devDependencies": {
