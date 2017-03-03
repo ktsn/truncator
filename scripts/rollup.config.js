@@ -6,7 +6,7 @@ const banner = `/*!
  * ${meta.homepage}
  *
  * @license
- * Copyright (c) 2015-2016 ${meta.author}
+ * Copyright (c) 2015-2017 ${meta.author}
  * Released under the MIT license
  * ${meta.homepage}/blob/master/LICENSE
  */`
