@@ -1,1 +1,1 @@
-export * from './truncator'
+export { truncate } from './truncator'

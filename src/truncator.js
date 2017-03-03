@@ -5,29 +5,45 @@ const DEFAULT_OPTIONS = {
   ellipsis: '...'
 }
 
+export class Truncator {
+  constructor (el, text, boundary, options, truncate) {
+    this.el = el
+    this.text = text
+    this.boundary = boundary
+    this.options = options
+    this.truncate = truncate
+
+    this.recalc()
+  }
+
+  recalc () {
+    execWithUnfixHeight(this.el.el, () => {
+      this.truncate(this.el, this.text, this.boundary, this.options)
+    })
+  }
+}
+
 export function truncate(el, text, options) {
   if (options === null || typeof options !== 'object') {
     throw new Error('options must be an object')
   }
 
-  execWithUnfixHeight(el, () => {
-    const domEl = dom(el)
-    const opts = normalizeOptions(options)
+  const domEl = dom(el)
+  const opts = normalizeOptions(options)
 
-    if (typeof opts.height === 'number') {
-      return truncateByHeight(domEl, text, opts.height, opts)
-    }
+  if (typeof opts.height === 'number') {
+    return new Truncator(domEl, text, opts.height, opts, truncateByHeight)
+  }
 
-    if (typeof opts.line === 'number') {
-      return truncateByLine(domEl, text, Math.floor(opts.line), opts)
-    }
+  if (typeof opts.line === 'number') {
+    return new Truncator(domEl, text, Math.floor(opts.line), opts, truncateByLine)
+  }
 
-    if (typeof opts.count === 'number') {
-      return truncateByCount(domEl, text, Math.floor(opts.count), opts)
-    }
+  if (typeof opts.count === 'number') {
+    return new Truncator(domEl, text, Math.floor(opts.count), opts, truncateByCount)
+  }
 
-    throw new Error('options must have height, line or count as number')
-  })
+  throw new Error('options must have height, line or count as number')
 }
 
 function normalizeOptions(options) {

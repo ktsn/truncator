@@ -32,8 +32,10 @@ var truncate = Truncator.truncate;
 
 ## Usage
 
+Just call `truncate` function then the specified text will be truncated.
+
 ```js
-truncate(el, text, options);
+var truncator = truncate(el, text, options);
 ```
 
 - `el`: `HTMLElement` that will be input `text`.
@@ -42,12 +44,23 @@ truncate(el, text, options);
   - `line`, `height` or `count`
   - `ellipsis`: Ellipsis symbol. `null` indicates no symbol will be added. default: `'...'`
 
+The returned object has `recalc()` method that retry to truncate the initially given `el` and `text` on the current state. It is useful if you want to adapt resizing the container element.
+
+```js
+truncator.recalc();
+```
+
 ### Example
 
 ```js
 var el = document.getElementById('wrapper');
-truncate(el, 'Target text', { line: 3, ellipsis: null });
+var truncator = truncate(el, 'Target text', { line: 3, ellipsis: null });
+
+window.addEventListener('resize', function () {
+  truncator.recalc();
+});
 ```
 
 ## License
+
 MIT

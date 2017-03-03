@@ -1,6 +1,6 @@
 import assert from 'power-assert'
 
-import { truncate } from '../src/truncator'
+import { truncate, Truncator } from '../src/truncator'
 
 describe('truncate methods', () => {
   let el, expected
@@ -116,6 +116,27 @@ describe('truncate methods', () => {
       truncate(el, input, { count: 10, ellipsis: undefined })
 
       assert(el.innerHTML === expected)
+    })
+  })
+
+  describe('Truncator model', () => {
+    it('recalculate the truncation', () => {
+      let callCount = 0
+
+      const stubEl = { el }
+
+      const mock = (el, text, boundary, options) => {
+        assert.deepStrictEqual(el, stubEl)
+        assert(text === input)
+        assert(boundary === 10)
+        assert.deepStrictEqual(options, { ellipsis: '...' })
+        callCount += 1
+      }
+
+      const t = new Truncator(stubEl, input, 10, { ellipsis: '...' }, mock)
+      assert(callCount === 1) // initial truncation
+      t.recalc()
+      assert(callCount === 2)
     })
   })
 })
