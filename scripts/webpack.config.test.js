@@ -1,6 +1,6 @@
 /* eslint-env node */
-const path = require('path');
-const glob = require('glob');
+const path = require('path')
+const glob = require('glob')
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
@@ -15,8 +15,7 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.js$/, loader: 'babel', exclude: /node_modules/ },
-      { test: /\.json$/, loader: 'json' }
+      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
     ]
   }
-};
+}
