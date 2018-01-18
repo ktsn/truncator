@@ -1,10 +1,8 @@
 {
   "presets": [
-    ["es2015", { "modules": false }]
+    ["env", { "modules": false }]
   ],
-  "env": {
-    "development": {
-      "plugins": ["babel-plugin-espower"]
-    }
-  }
+  "plugins": [
+    "external-helpers"
+  ]
 }

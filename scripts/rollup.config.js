@@ -6,12 +6,12 @@ const banner = `/*!
  * ${meta.homepage}
  *
  * @license
- * Copyright (c) 2015-2017 ${meta.author}
+ * Copyright (c) 2015-2018 ${meta.author}
  * Released under the MIT license
  * ${meta.homepage}/blob/master/LICENSE
  */`
 
-const moduleName = 'Truncator'
+const name = 'Truncator'
 
 const plugins = [
   babel({
@@ -20,9 +20,11 @@ const plugins = [
 ]
 
 module.exports = {
-  entry: 'src/index.js',
-  format: 'umd',
-  plugins,
-  moduleName,
-  banner
+  input: 'src/index.js',
+  output: {
+    format: 'umd',
+    name,
+    banner
+  },
+  plugins
 }

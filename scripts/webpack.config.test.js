@@ -15,7 +15,20 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        options: {
+          babelrc: false,
+          presets: [
+            ['env', { modules: false }]
+          ],
+          plugins: [
+            'babel-plugin-espower'
+          ]
+        }
+      }
     ]
   }
 }
