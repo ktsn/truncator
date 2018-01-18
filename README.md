@@ -44,10 +44,17 @@ var truncator = truncate(el, text, options);
   - `line`, `height` or `count`
   - `ellipsis`: Ellipsis symbol. `null` indicates no symbol will be added. default: `'...'`
 
-The returned object has `recalc()` method that retry to truncate the initially given `el` and `text` on the current state. It is useful if you want to adapt resizing the container element.
+The returned object has the following methods:
+
+- `recalc()`: Retry to truncate the initially given `el` and `text` on the current state. It is useful if you want to adapt resizing the container element.
+- `restoreText()`: Restore the original text on `el`.
 
 ```js
+// Re-truncate the text
 truncator.recalc();
+
+// Restore the original text
+truncator.restoreText();
 ```
 
 ### Example
