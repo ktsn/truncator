@@ -138,5 +138,13 @@ describe('truncate methods', () => {
       t.recalc()
       assert(callCount === 2)
     })
+
+    it('restore the original text', () => {
+      const t = truncate(el, input, { count: 10 })
+
+      assert(el.innerHTML === 'Grumpy wiz...')
+      t.restoreText()
+      assert(el.innerHTML === input)
+    })
   })
 })

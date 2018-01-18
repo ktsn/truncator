@@ -21,6 +21,10 @@ export class Truncator {
       this.truncate(this.el, this.text, this.boundary, this.options)
     })
   }
+
+  restoreText () {
+    this.el.text = this.text
+  }
 }
 
 export function truncate(el, text, options) {
